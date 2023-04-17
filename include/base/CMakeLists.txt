@@ -1,0 +1,3 @@
+add_library (baseComponents INTERFACE)
+target_include_directories(baseComponents INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+set_target_properties(baseComponents PROPERTIES LINKER_LANGUAGE CXX)

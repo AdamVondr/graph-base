@@ -33,4 +33,6 @@
 
 # FOLDERS
 out
+build
+CMakeFiles
 .vs
