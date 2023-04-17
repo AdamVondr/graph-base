@@ -1,2 +1,2 @@
-add_executable(${PROJECT_NAME} "base_examples.cpp")
-target_link_libraries(${PROJECT_NAME} baseComponents)
+add_executable(base_example base_examples.cpp)
+target_link_libraries(base_example baseComponents)
