@@ -1,5 +1,5 @@
-#include "base_node.h"
-#include "base_edge.h"
+#include "base_node.hpp"
+#include "base_edge.hpp"
 
 int main(void)
 {
