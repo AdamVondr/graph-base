@@ -7,14 +7,14 @@ int main(void)
 	using node_t = BaseNode;
 	auto print = [](auto expr) { std::cout << expr << std::endl; };
 
-	// initialization of node with id{0}
+	// initialization of node with id
 
 	node_t node1 = node_t{ 1 };
 	node_t* node2 = new node_t{ 2 };
 	print(node1);
 	print(*node2);
 
-	// edge initialization
+	// edge initialization - same type
 	Edge<node_t> edge1 = Edge<node_t>{ node1, *node2 };
 	Edge<node_t*> edge2 = Edge<node_t*>{ &node1, node2 };
 	Edge<node_t>* edge3 = new Edge<node_t>{ node1, *node2 };
@@ -24,8 +24,13 @@ int main(void)
 	print(*edge3);
 	print(*edge4);
 
-	// basic operations
-	assert(!(node1 == *node2));
+	// edge initialization - different type
+	auto edge5 = Edge<node_t, int>{ node1, 1 };
+	auto edge6 = Edge<node_t, char>{ node1, 'X'};
+	auto edge7 = Edge<node_t, node_t*>{ node1, node2 };
+	print(edge5);
+	print(edge6);
+	print(edge7);
 
 	return 0;
 }

@@ -5,30 +5,24 @@
 // EDGE
 //------------------------------------------------------------
 
-template<typename node_t>
+template<typename node1_t, typename node2_t = node1_t>
 struct Edge
 {
-    node_t first;
-    node_t second;
+    node1_t first;
+    node2_t second;
 
     // node_first -> node_second
-    Edge(node_t node_first, node_t node_second) : first(node_first), second(node_second) {}
-    bool operator<(Edge<node_t> const& edge);
+    Edge(node1_t node_first, node2_t node_second) : first(node_first), second(node_second) {}
+    bool operator<(Edge<node1_t,node2_t> const& edge);
 };
 
 //------------------------------------------------------------
 // EDGE - OVERLOAD STD::COUT
 //------------------------------------------------------------
-
-template<typename node_t>
-std::ostream& operator<<(std::ostream& output, Edge<node_t>& edge) {
+// normal
+template<typename node1_t, typename node2_t = node1_t>
+std::ostream& operator<<(std::ostream& output, Edge<node1_t,node2_t>& edge) {
     output << "Edge: (" << edge.first << ", " << edge.second << ")";
-    return output;
-}
-
-template<typename node_t>
-std::ostream& operator<<(std::ostream& output, Edge<node_t*>& edge) {
-    output << "Edge: (" << *edge.first << ", " << *edge.second << ")";
     return output;
 }
 
@@ -37,8 +31,8 @@ std::ostream& operator<<(std::ostream& output, Edge<node_t*>& edge) {
 //------------------------------------------------------------
 // lexicographical
 
-template<typename node_t>
-bool Edge<node_t>::operator<(Edge<node_t> const& edge)
+template<typename node1_t, typename node2_t>
+bool Edge<node1_t, node2_t>::operator<(Edge<node1_t, node2_t> const& edge)
 {
     if (first < edge.first) { return true; }
     if ((first == edge.first) && (second < edge.second)) { return true; }
